@@ -1,6 +1,14 @@
+<%= render "banner", cocktail: @cocktail %>
 
-<ul>
+
+<div class="d-flex col-12">
   <% @cocktails.each do |cocktail| %>
-    <li><%= cocktail.name %></li>
+    <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+      <p><%= cocktail.name %></p>
+      <%= link_to "Edit Drink", new_cocktail_dose_path(cocktail) %>
+    </div>
   <% end %>
-</ul>
+</div>
+
+
+<%= link_to "Add a Drink", new_cocktail_path %>
