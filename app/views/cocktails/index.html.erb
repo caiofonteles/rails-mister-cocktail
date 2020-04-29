@@ -1,13 +1,15 @@
 <%= render "banner", cocktail: @cocktail %>
 
-
-<div class="d-flex col-12">
-  <% @cocktails.each do |cocktail| %>
-    <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-      <p><%= cocktail.name %></p>
-      <%= link_to "Edit Drink", new_cocktail_dose_path(cocktail) %>
-    </div>
-  <% end %>
+<div class="row">
+  <div class="d-grid col-6">
+    <% @cocktails.each do |cocktail| %>
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+        <h3><%= cocktail.name %></h3>
+        <%= link_to "Edit Drink", new_cocktail_dose_path(cocktail) %>
+        <%= link_to "Show Ingredients", cocktail_path(cocktail) %>
+      </div>
+    <% end %>
+  </div>
 </div>
 
 
