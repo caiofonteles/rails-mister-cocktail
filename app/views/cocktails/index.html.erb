@@ -1,16 +1,23 @@
 <%= render "banner", cocktail: @cocktail %>
-
-<div class="row">
-  <div class="d-grid col-6">
-    <% @cocktails.each do |cocktail| %>
-      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-        <h3><%= cocktail.name %></h3>
-        <%= link_to "Edit Drink", new_cocktail_dose_path(cocktail) %>
-        <%= link_to "Show Ingredients", cocktail_path(cocktail) %>
-      </div>
-    <% end %>
+<div class="container">
+  <div class="row">
+      <% @cocktails.each do |cocktail| %>
+        <div class="d-grid column">
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+            <h3><%= cocktail.name.capitalize %></h3>
+            <%= link_to "Edit Drink",
+                      new_cocktail_dose_path(cocktail),
+                      class: "btn btn-outline-light" %>
+            <%= link_to "Show Ingredients",
+                      cocktail_path(cocktail),
+                      class: "btn btn-outline-light" %>
+          </div>
+        </div>
+      <% end %>
   </div>
 </div>
 
 
-<%= link_to "Add a Drink", new_cocktail_path %>
+<div class="container footer">
+  <%= link_to "Add a new drink", new_cocktail_path, class: "btn btn-outline-secondary" %>
+</div>

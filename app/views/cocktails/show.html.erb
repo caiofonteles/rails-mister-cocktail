@@ -1,13 +1,23 @@
-<h1><%= @cocktail.name %></h1>
-<% Dose.where(cocktail_id: @cocktail.id).each do |dose| %>
-  <ul>
-    <li><%= dose.description %> of <%= Ingredient.find(dose.ingredient_id).name %>
-        <%= link_to "Delete Dose",
-             dose_path,
-             method: :delete,
-             data: { confirm: "Are you sure?" } %>
-    </li>
-  </ul>
-<% end %>
-<%= link_to "Edit Drink", new_cocktail_dose_path(@cocktail) %>
-<%= link_to "Back to Home", cocktails_path %>
+<div class="card-drink">
+  <h1><%= @cocktail.name %></h1>
+  <% if @cocktail.photo.key %>
+    <%= cl_image_tag @cocktail.photo.key, height: 260, width: 380, crop: :fill, radius: 10  %>
+  <% end %>
+  <p></p>
+  <% Dose.where(cocktail_id: @cocktail.id).each do |dose| %>
+    <ul>
+      <li><%= dose.description %> of <%= Ingredient.find(dose.ingredient_id).name %>
+          <%= link_to "Delete Dose",
+               dose_path,
+               method: :delete,
+               data: { confirm: "Are you sure?" },
+               class: "btn btn-outline-secondary" %>
+      </li>
+    </ul>
+  <% end %>
+  <div class="container footer">
+    <%= link_to "Edit Drink", new_cocktail_dose_path(@cocktail), class: "btn btn-outline-secondary" %>
+    <%= link_to "Back to Home", cocktails_path , class: "btn btn-outline-secondary" %>
+  </div>
+</div>
+
