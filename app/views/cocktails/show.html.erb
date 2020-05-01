@@ -1,7 +1,7 @@
 <div class="show-back" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=500);">
   <div class="card-show">
     <h1><%= @cocktail.name.capitalize %></h1>
-    <% if @cocktail.photo.key %>
+    <% if @cocktail.photo.attached? %>
       <%= cl_image_tag @cocktail.photo.key, height: 200, width: 380, crop: :fill, radius: 10  %>
     <% end %>
     <p></p>
