@@ -1,7 +1,12 @@
-<%= Cocktail.find(params[:cocktail_id]).name %>
-<%= simple_form_for([Cocktail.find(params[:cocktail_id]), @dose]) do |f| %>
-  <%= f.input :description %>
-  <%= f.association :ingredient %>
-  <%= f.submit %>
-<% end %>
-<%= link_to "Back to Home", cocktails_path %>
+<div class="show-back" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=500);">
+  <div class="card-new">
+    <%= Cocktail.find(params[:cocktail_id]).name.capitalize %>
+    <%= simple_form_for([Cocktail.find(params[:cocktail_id]), @dose]) do |f| %>
+      <%= f.input :description %>
+      <%= f.association :ingredient %>
+      <%= f.submit :submit, class: "btn btn-secondary" %>
+    <% end %>
+    <%= link_to "Back to Home", root_path,
+                class: "btn btn-outline-secondary"  %>
+  </div>
+</div>
